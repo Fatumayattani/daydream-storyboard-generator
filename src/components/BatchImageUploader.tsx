@@ -92,7 +92,7 @@ const BatchImageUploader: React.FC = () => {
           Daydream Storyboard Generator
         </h1>
         <p className="text-gray-600">
-          Upload images to create live HLS videos with Daydream AI
+          Upload images to create live HLS videos with Daydream API
         </p>
       </div>
 
