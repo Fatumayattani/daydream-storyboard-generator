@@ -1,12 +1,12 @@
 # Daydream Storyboard Generator
 
-A full-stack React + Node.js application that converts images into live video streams using the Daydream API.
+Daydream Storyboard Generator is a project that takes multiple images and turns them into a short video storyboard. It uses the Daydream API to handle media streaming and playback, making it easier to experiment with creative storytelling through visuals.
+
 
 ## Features
 
 - **Multiple Image Upload**: Drag-and-drop interface with file picker support
 - **Daydream Integration**: Automatic stream creation via Daydream API
-- **Live Video Generation**: FFmpeg-based image-to-video conversion
 - **Inline Video Players**: HLS and WebRTC stream playback directly in the browser
 - **CORS Proxy**: Built-in HLS proxy to handle cross-origin requests
 - **Real-time Progress**: Upload progress and processing status indicators
