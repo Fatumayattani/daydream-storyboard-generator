@@ -8,22 +8,22 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import 'dotenv/config';
 
-// ES module __dirname fix
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// Middleware
+
 const allowedOrigins = [
-  'http://localhost:5173',             // local dev
-  'https://your-frontend.netlify.app'  // replace with your actual Netlify URL
+  'http://localhost:5173',             
+  'https://daydream-storyboard.netlify.app/'  
 ];
 
 app.use(cors({
   origin: function(origin, callback){
-    // allow requests with no origin (like mobile apps or curl)
+    
     if(!origin) return callback(null, true);
     if(allowedOrigins.indexOf(origin) === -1){
       const msg = `The CORS policy for this site does not allow access from the specified Origin.`;
@@ -37,14 +37,14 @@ app.use(cors({
 app.use(express.json());
 app.use('/outputs', express.static(path.join(__dirname, '../outputs')));
 
-// Ensure directories exist
+
 const ensureDir = (dir) => {
   if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
 };
 ensureDir('uploads');
 ensureDir('outputs');
 
-// Multer configuration
+
 const storage = multer.diskStorage({
   destination: (req, file, cb) => cb(null, 'uploads/'),
   filename: (req, file, cb) => {
