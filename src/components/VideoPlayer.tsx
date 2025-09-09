@@ -26,23 +26,23 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ src, type, title }) => {
           lowLatencyMode: true,
           backBufferLength: 90
         });
-        
+
         hlsRef.current = hls;
 
         hls.loadSource(src);
         hls.attachMedia(video);
-        
+
         hls.on(Hls.Events.MANIFEST_PARSED, () => {
           console.log('HLS manifest parsed');
           setLoading(false);
         });
-        
-        hls.on(Hls.Events.ERROR, (event, data) => {
+
+        hls.on(Hls.Events.ERROR, (_, data) => {
           console.error('HLS error:', data);
           setError(`HLS Error: ${data.details}`);
           setLoading(false);
         });
-        
+
       } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
         // Native HLS support (Safari)
         video.src = src;
@@ -92,7 +92,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ src, type, title }) => {
           </div>
         </div>
       )}
-      
+
       <video
         ref={videoRef}
         className="w-full h-full object-cover"
@@ -104,7 +104,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ src, type, title }) => {
         onCanPlay={handleCanPlay}
         onError={handleError}
       />
-      
+
       <div className="absolute top-2 left-2 bg-black bg-opacity-50 text-white px-2 py-1 rounded text-xs">
         {type.toUpperCase()} - {title}
       </div>
