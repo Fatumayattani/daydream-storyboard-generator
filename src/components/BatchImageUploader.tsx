@@ -3,6 +3,8 @@ import { Upload, X, CheckCircle, AlertCircle, Play } from 'lucide-react';
 import VideoPlayer from './VideoPlayer';
 import { UploadResult } from '../types';
 
+const BACKEND_URL = "https://daydream-backend-3bwc.onrender.com";
+
 const BatchImageUploader: React.FC = () => {
   const [files, setFiles] = useState<File[]>([]);
   const [uploading, setUploading] = useState(false);
@@ -58,8 +60,10 @@ const BatchImageUploader: React.FC = () => {
       const formData = new FormData();
       files.forEach(file => formData.append('images', file));
 
-      const response = await fetch('http://localhost:3001/upload-images', {
-        method: 'POST',
+      const BACKEND_URL = "https://daydream-backend-3bwc.onrender.com";
+
+      const response = await fetch(`${BACKEND_URL}/upload-images`, {
+       method: 'POST',
         body: formData
       });
 
@@ -215,7 +219,7 @@ const BatchImageUploader: React.FC = () => {
                       <div>
                         <h4 className="text-sm font-medium text-gray-700 mb-2">Daydream Stream</h4>
                         <VideoPlayer
-                          src={`http://localhost:3001${result.hls_url}`}
+                          src={`${BACKEND_URL}${result.hls_url}`}
                           type="hls"
                           title={result.originalName}
                         />
