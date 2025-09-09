@@ -29,24 +29,14 @@ A full-stack React + Node.js application that converts images into live video st
 
 ### Development Mode (Both Frontend and Backend)
 ```bash
-npm run dev:all
+server - node server/index.js
+frontend - npm run dev
+(run in separate terminal)
 ```
 
 This will start:
 - Backend server on `http://localhost:3001`
 - Frontend development server on `http://localhost:5173`
-
-### Individual Commands
-
-Backend only:
-```bash
-npm run server
-```
-
-Frontend only:
-```bash
-npm run dev
-```
 
 ## Project Structure
 
@@ -75,17 +65,3 @@ npm run dev
 The Daydream API configuration is in `server/index.js`:
 - `PIPELINE_ID`: Daydream pipeline identifier
 - `API_TOKEN`: Daydream API authentication token
-
-## Dependencies
-
-### Frontend
-- React 18 with TypeScript
-- HLS.js for video streaming
-- Tailwind CSS for styling
-- Lucide React for icons
-
-### Backend
-- Express.js web server
-- Multer for file uploads
-- Axios for HTTP requests
-- FFmpeg for video processing
